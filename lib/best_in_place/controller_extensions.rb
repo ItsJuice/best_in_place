@@ -13,8 +13,8 @@ module BestInPlace
       else
         klass = obj.class.to_s
       end
-      param_key = BestInPlace::Utils.object_to_key(obj)
-      updating_attr = options[:param_key] || params[param_key].keys.first
+      param_key = options[:param_key] || BestInPlace::Utils.object_to_key(obj)
+      updating_attr = params[param_key].keys.first
 
       if renderer = BestInPlace::DisplayMethods.lookup(klass, updating_attr)
         render :json => renderer.render_json(obj)
